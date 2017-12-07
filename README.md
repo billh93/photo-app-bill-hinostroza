@@ -13,6 +13,7 @@ Responsive Design: Application runs in most devices browsers such as Smartphones
 * Modern Web Browser (Latest version of Chrome or Firefox works best!)
 * Node >= 6 installed on your machine
 * 500px API
+* npm-run-all (npm package)
 * SASS ('node-sass-chokidar' npm package)
 * Create-react-app (npm package)
 
