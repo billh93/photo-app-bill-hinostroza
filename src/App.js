@@ -1,10 +1,59 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import "./App.css";
 
 // TODO: Include a sticky header containing a simple text logo on the left and an example dropdown menu on the right
 // TODO: Make APP pretty using SASS
 // TODO: Make APP responsive using custom Grid
 // TODO: Create tests using jests
+
+export class Sticky extends Component {
+  componentDidMount() {
+    const setInitialHeights = (elements) => {
+      [].forEach.call(elements, (sticky) => {
+        sticky.setAttribute('data-sticky-initial', sticky.getBoundingClientRect().top);
+      });
+    };
+
+    const stickies = document.querySelectorAll('[data-sticky]');
+    setInitialHeights(stickies);
+
+    document.addEventListener('scroll', () => {
+      const top = document.documentElement.scrollTop || document.body.scrollTop;
+      const bottom = document.documentElement.scrollHeight || document.body.scrollHeight;
+
+      [].forEach.call(stickies, (sticky) => {
+        const stickyInitial = parseInt(sticky.getAttribute('data-sticky-initial'), 10);
+        const stickyEnter = parseInt(sticky.getAttribute('data-sticky-enter'), 10) || stickyInitial;
+        const stickyExit = parseInt(sticky.getAttribute('data-sticky-exit'), 10) || bottom;
+
+        if (top >= stickyEnter && top <= stickyExit) {
+          sticky.classList.add('sticky');
+        } else {
+          sticky.classList.remove('sticky');
+        }
+      });
+    });
+  }
+
+  render() {
+    const { className, enter, exit, children } = this.props;
+    return (<div
+      className={`Sticky ${className}`}
+      data-sticky
+      data-sticky-enter={enter}
+      data-sticky-exit={exit}>
+      {children}
+    </div>);
+  }
+}
+
+Sticky.propTypes = {
+  className: PropTypes.string,
+  enter: PropTypes.string,
+  exit: PropTypes.string,
+  children: PropTypes.node,
+};
 
 class App extends Component {
     constructor(props){
@@ -63,11 +112,16 @@ class App extends Component {
     render() {
         return (
             <div className="App">
+                <Sticky className="navContainer">
+                  <h3>Testing #1</h3>
+                </Sticky>
                 <form className="searchBar" onSubmit={this.handleSubmit.bind(this)}>
                     <input type="text" value={this.state.query} onChange={this.handleChange.bind(this)} placeholder="Search Here" />
                     <input type="submit" value="Submit"/>
                 </form>
-                {this.state.photos}
+                <div className="imagesContainer">
+                    {this.state.photos}
+                </div>
             </div>
         );
     }

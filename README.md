@@ -14,6 +14,8 @@ Responsive Design: Application runs in most devices browsers such as Smartphones
 * Node >= 6 installed on your machine
 * 500px API
 * npm-run-all (npm package)
+* normalize.scss (npm package)
+* prop-types (npm package)
 * SASS ('node-sass-chokidar' npm package)
 * Create-react-app (npm package)
 
@@ -33,6 +35,9 @@ This project consists the following files and directories:
 5. Run this command `npm install npm-run-all --save-dev` to install npm-run-all package
 5. Type `npm start` to run the app.
 6. Your browser should open up with the app running.
+
+## Credits:
+Sticky Class - Ryan Glover From The Meteor Chef (https://themeteorchef.com/tutorials/react-sticky-scroll)
 
 ## Resources Used:
 * Google

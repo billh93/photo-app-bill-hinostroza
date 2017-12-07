@@ -1,3 +1,43 @@
+// Imports normalize.scss to keep default styling consistent across all browsers
+@import "node_modules/normalize-scss/sass/normalize/_import-now.scss";
+
+$red: #da5347;
+
+body {
+  // This is just here to demonstrate scroll. You can remove it :)
+  height: 1000px;
+}
+
+.Sticky {
+  padding: 20px;
+  font-size: 18px;
+  color: #fff;
+
+  h3 { margin: 0; }
+
+  &.navContainer {
+      background: $red;
+  }
+
+  &.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 20px;
+  }
+}
+
+.searchBar{
+    margin-top: 5%;
+}
+
+.imagesContainer{
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+}
+
 .images{
     float:left;
     display: block;
