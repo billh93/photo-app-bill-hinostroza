@@ -3,49 +3,195 @@
 // Imports react-dd-menu styling; Will be overwritten with custom scss
 @import "node_modules/react-dd-menu/src/scss/react-dd-menu.scss";
 
+// Global Variables to reuse throughout app
 $red: #da5347;
 
+/********* Breakpoints *********/
+
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 430px;
+
+// Small tablets (portrait view)
+$screen-md-min: 500px;
+
+// Tablets and small desktops
+$screen-lg-min: 600px;
+
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+/********* Mixins *********/
+
+// Small devices
+@mixin sm {
+   @media (min-width: #{$screen-sm-min}) {
+       @content;
+   }
+}
+
+// Medium devices
+@mixin md {
+   @media (min-width: #{$screen-md-min}) {
+       @content;
+   }
+}
+
+// Large devices
+@mixin lg {
+   @media (min-width: #{$screen-lg-min}) {
+       @content;
+   }
+}
+
+// Extra large devices
+@mixin xl {
+   @media (min-width: #{$screen-xl-min}) {
+       @content;
+   }
+}
+
+// body
 body {
-  // This is just here to demonstrate scroll. You can remove it :)
-  height: 1000px;
+    // This is just here to demonstrate scroll. You can remove it :)
+    height: 1000px;
+
+    // 576px window width and more
+    // Small tablets and large smartphones (landscape view)
+    @include sm {
+
+    }
+    // 768px window width and more
+    // Small tablets (portrait view)
+    @include md {
+
+    }
+    // 992px window width and more
+    @include lg {
+
+    }
+    // 1200px window width and more
+    @include xl {
+
+    }
 }
 
+// NavBar
 .Sticky {
-  padding: 20px;
-  font-size: 18px;
-  color: #fff;
-
-  h3 { margin: 0; }
-
-  &.navContainer {
-      background: $red;
-  }
-
-  &.sticky {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
+    // Removes bullet points from list in Navbar
+    ul { list-style: none;}
+    // CSS for sticky class component
+    &.sticky {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    // CSS for NavBar
+    &.navContainer {
+        background: $red;
+        padding: 20px;
+        font-size: 18px;
+        color: #fff;
+        li{display: inline;}
+    }
+    // DropdownMenu
+    // Moves DropdownMenu to the right of the navBar
+    .DDMenu {
+        float: right;
+    }
+    // When user hovers cursor over element the pointer sign shows
+    .DDMenu:hover {
+        cursor: pointer;
+    }
+    // Makes the dropdown list more stylish
+    .dd-menu .dd-menu-items ul {
+        padding: 10px 20px;
+        background-color: $red;
+    }
+    // Makes the dropdown items more stylish
+    .dd-menu .dd-menu-items ul li {
+        color: white;
+        display: inline-block;
+    }
+    // Background color will be red when user hover overs dropdown list
+    .dd-menu .dd-menu-items ul li:hover {
+        background-color: $red !important;
+    }
 }
 
-.searchBar{
+// searchBar
+.searchBar {
     margin-top: 5%;
-    clear: both;
     text-align: center;
     border: 1px solid black;
+    // 430px window width and more
+    // Small tablets and large smartphones (landscape view)
+    @include sm {
+
+    }
+    // 768px window width and more
+    // Small tablets (portrait view)
+    @include md {
+
+    }
+    // 992px window width and more
+    @include lg {
+
+    }
+    // 1200px window width and more
+    @include xl {
+
+    }
 }
 
+// Photos
 .imagesContainer{
     display: block;
     margin: 0 auto;
     width: 90%;
     border: 1px solid black;
-}
+    overflow: hidden;
+    text-align: center;
+    // 430px window width and more
+    // Small tablets and large smartphones (landscape view)
+    @include sm {
 
-.images{
-    float:left;
-    display: block;
-    margin: 0 auto;
-    border: 1px solid black;
+    }
+    // 500px window width and more
+    // Small tablets (portrait view)
+    @include md {
+
+    }
+    // 992px window width and more
+    @include lg {
+
+    }
+    // 1200px window width and more
+    @include xl {
+
+    }
+    .images{
+        float: left;
+        display: inline-block;
+        border: 1px solid black;
+        vertical-align: middle;
+        // 430px window width and more
+        // Small tablets and large smartphones (landscape view)
+        @include sm {
+
+        }
+        // 500px window width and more
+        // Small tablets (portrait view)
+        @include md {
+
+        }
+        // 768px window width and more
+        @include lg {
+
+        }
+        // 1200px window width and more
+        @include xl {
+
+        }
+    }
 }

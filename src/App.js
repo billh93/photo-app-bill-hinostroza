@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import "./App.css";
 import DropdownMenu from 'react-dd-menu';
 
-// TODO: Include a sticky header containing a simple text logo on the left and an example dropdown menu on the right
 // TODO: Make APP pretty using SASS
 // TODO: Make APP responsive using custom Grid
 // TODO: Create tests using jests
@@ -56,7 +55,7 @@ Sticky.propTypes = {
   children: PropTypes.node,
 };
 
-class Example extends Component {
+class DropMenu extends Component {
   constructor() {
     super();
     this.state = {
@@ -83,13 +82,15 @@ class Example extends Component {
     const menuOptions = {
       isOpen: this.state.isMenuOpen,
       close: this.close,
-      toggle: <button type="button" onClick={this.toggle}>Click me!</button>,
+      toggle: <span onClick={this.toggle}>Menu</span>,
       align: 'right'
     };
     return (
       <DropdownMenu {...menuOptions}>
-        <li><a href="#">Example 1</a></li>
-        <li><button type="button" onClick={this.click}>Example 2</button></li>
+        <li onClick={this.click}>Edit Profile</li>
+        <li onClick={this.click}>Account Settings</li>
+        <hr />
+        <li onClick={this.click}>Log Out</li>
       </DropdownMenu>
     );
   }
@@ -152,10 +153,12 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <Sticky className="navContainer">
-                    <h3>Test</h3>
+                <Sticky className="navContainer" enter={1}>
+                    <ul>
+                        <li>Bill</li>
+                        <li className="DDMenu"><DropMenu /></li>
+                    </ul>
                 </Sticky>
-                <Example />
                 <form className="searchBar" onSubmit={this.handleSubmit.bind(this)}>
                     <input type="text" value={this.state.query} onChange={this.handleChange.bind(this)} placeholder="Search Here" />
                     <input type="submit" value="Submit"/>
