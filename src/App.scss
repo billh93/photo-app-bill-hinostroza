@@ -1,5 +1,7 @@
 // Imports normalize.scss to keep default styling consistent across all browsers
 @import "node_modules/normalize-scss/sass/normalize/_import-now.scss";
+// Imports react-dd-menu styling; Will be overwritten with custom scss
+@import "node_modules/react-dd-menu/src/scss/react-dd-menu.scss";
 
 $red: #da5347;
 
@@ -24,18 +26,21 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    margin-bottom: 20px;
   }
 }
 
 .searchBar{
     margin-top: 5%;
+    clear: both;
+    text-align: center;
+    border: 1px solid black;
 }
 
 .imagesContainer{
     display: block;
     margin: 0 auto;
     width: 90%;
+    border: 1px solid black;
 }
 
 .images{

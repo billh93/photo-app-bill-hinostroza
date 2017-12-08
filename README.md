@@ -17,6 +17,7 @@ Responsive Design: Application runs in most devices browsers such as Smartphones
 * normalize.scss (npm package)
 * prop-types (npm package)
 * SASS ('node-sass-chokidar' npm package)
+* react-dd-menu (npm package)
 * Create-react-app (npm package)
 
 ## Project Contents:

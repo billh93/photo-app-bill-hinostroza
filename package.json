@@ -7,8 +7,10 @@
     "normalize-scss": "^7.0.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
+    "react-dd-menu": "^2.0.2",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.0.17"
+    "react-scripts": "1.0.17",
+    "react-sticky": "^5.0.8"
   },
   "homepage": "https://billh93.github.io/photo-app-bill-hinostroza",
   "scripts": {
