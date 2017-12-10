@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import "./App.css";
 import DropdownMenu from 'react-dd-menu';
 
+// We will store our style for our gray background here
+// Look at line 119 for more info
+let grayBackground = {};
+
 // TODO: Make APP pretty using SASS
 // TODO: Make APP responsive using custom Grid
 // TODO: Create tests using jests
@@ -112,6 +116,9 @@ class App extends Component {
 
     // When submit is clicked or form is returned this function will run
     handleSubmit(e){
+        // When user submits form and images are retrieved
+        // imagesContainer background turns gray
+        grayBackground = {'background-color': '#F5F5F5'};
         // URL we're going to call to get our images
         let API = "https://api.500px.com/v1/photos/search?consumer_key=vpwYm5gVpNd9PIcVRsNm8OdbcrTA0RUmqwnRj3af&term=";
         // We're appending the users query to the end of the API variable
@@ -123,6 +130,8 @@ class App extends Component {
         }).then(data => {
             // If data.photos is blank, show user 'No Results Found'
             if((data.photos || []).length === 0){
+                // Removes styling in imagesContainer
+                grayBackground = {};
                 alert("Sorry, no results show up for your search!");
             }
             // We're essentially running a for loop and displaying the data into html
@@ -163,7 +172,7 @@ class App extends Component {
                     <input type="text" value={this.state.query} onChange={this.handleChange.bind(this)} placeholder="Search Here" />
                     <input type="submit" value="Submit"/>
                 </form>
-                <div className="imagesContainer">
+                <div className="imagesContainer" ref="imagesContainer" style={grayBackground}>
                     {this.state.photos}
                 </div>
             </div>

@@ -3,19 +3,24 @@
 // Imports react-dd-menu styling; Will be overwritten with custom scss
 @import "node_modules/react-dd-menu/src/scss/react-dd-menu.scss";
 
+/* body {
+    // This is just here to demonstrate scroll. You can remove it :)
+    height: 1000px;
+} */
+
 // Global Variables to reuse throughout app
 $red: #da5347;
 
 /********* Breakpoints *********/
 
 // Small tablets and large smartphones (landscape view)
-$screen-sm-min: 430px;
+$screen-sm-min: 576px;
 
 // Small tablets (portrait view)
-$screen-md-min: 500px;
+$screen-md-min: 768px;
 
 // Tablets and small desktops
-$screen-lg-min: 600px;
+$screen-lg-min: 992px;
 
 // Large tablets and desktops
 $screen-xl-min: 1200px;
@@ -48,31 +53,6 @@ $screen-xl-min: 1200px;
    @media (min-width: #{$screen-xl-min}) {
        @content;
    }
-}
-
-// body
-body {
-    // This is just here to demonstrate scroll. You can remove it :)
-    height: 1000px;
-
-    // 576px window width and more
-    // Small tablets and large smartphones (landscape view)
-    @include sm {
-
-    }
-    // 768px window width and more
-    // Small tablets (portrait view)
-    @include md {
-
-    }
-    // 992px window width and more
-    @include lg {
-
-    }
-    // 1200px window width and more
-    @include xl {
-
-    }
 }
 
 // NavBar
@@ -121,9 +101,9 @@ body {
 
 // searchBar
 .searchBar {
-    margin-top: 5%;
+    margin: 5% 0;
     text-align: center;
-    border: 1px solid black;
+    //border: 1px solid black;
     // 430px window width and more
     // Small tablets and large smartphones (landscape view)
     @include sm {
@@ -149,32 +129,16 @@ body {
     display: block;
     margin: 0 auto;
     width: 90%;
-    border: 1px solid black;
+    padding: 2% 0;
+    //border: 1px solid black;
     overflow: hidden;
     text-align: center;
-    // 430px window width and more
-    // Small tablets and large smartphones (landscape view)
-    @include sm {
-
-    }
-    // 500px window width and more
-    // Small tablets (portrait view)
-    @include md {
-
-    }
-    // 992px window width and more
-    @include lg {
-
-    }
-    // 1200px window width and more
-    @include xl {
-
-    }
+    border-radius: 1%;
     .images{
-        float: left;
         display: inline-block;
-        border: 1px solid black;
+        //border: 1px solid black;
         vertical-align: middle;
+        margin: 0 1% 1% 1%;
         // 430px window width and more
         // Small tablets and large smartphones (landscape view)
         @include sm {
