@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
-import "./App.css";
 import DropdownMenu from 'react-dd-menu';
+import "./App.css";
 
+// Global Variables
 // We will store our style for our gray background here
 // Look at line 119 for more info
 let grayBackground = {};
 
-// TODO: Make APP pretty using SASS
-// TODO: Make APP responsive using custom Grid
 // TODO: Create tests using jests
 
 export class Sticky extends Component {
@@ -91,14 +90,20 @@ class DropMenu extends Component {
     };
     return (
       <DropdownMenu {...menuOptions}>
-        <li onClick={this.click}>Edit Profile</li>
-        <li onClick={this.click}>Account Settings</li>
+        <li>Edit Profile</li>
+        <li>Account Settings</li>
         <hr />
-        <li onClick={this.click}>Log Out</li>
+        <li>Log Out</li>
       </DropdownMenu>
     );
   }
 }
+
+DropMenu.propTypes = {
+  isOpen: PropTypes.bool,
+  close: PropTypes.bool,
+  toggle: PropTypes.func
+};
 
 class App extends Component {
     constructor(props){
@@ -118,7 +123,7 @@ class App extends Component {
     handleSubmit(e){
         // When user submits form and images are retrieved
         // imagesContainer background turns gray
-        grayBackground = {'background-color': '#F5F5F5'};
+        grayBackground = {'backgroundColor': '#F5F5F5'};
         // URL we're going to call to get our images
         let API = "https://api.500px.com/v1/photos/search?consumer_key=vpwYm5gVpNd9PIcVRsNm8OdbcrTA0RUmqwnRj3af&term=";
         // We're appending the users query to the end of the API variable
@@ -139,6 +144,8 @@ class App extends Component {
                 return(
                     <div key={pics.id} className="images">
                         <img src={pics.image_url} alt={pics.name}/>
+                        <p><span className="picViews"><i className="fa fa-eye" aria-hidden="true"></i> {pics.times_viewed}</span>
+                        <span className="picRatings"><i className="fa fa-star" aria-hidden="true"></i> {pics.rating}</span></p>
                     </div>
                 );
             });
@@ -162,13 +169,13 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <Sticky className="navContainer" enter={1}>
+                <Sticky className="navContainer" enter={'1'}>
                     <ul>
                         <li>Bill</li>
                         <li className="DDMenu"><DropMenu /></li>
                     </ul>
                 </Sticky>
-                <form className="searchBar" onSubmit={this.handleSubmit.bind(this)}>
+                <form className="searchForm" onSubmit={this.handleSubmit.bind(this)}>
                     <input type="text" value={this.state.query} onChange={this.handleChange.bind(this)} placeholder="Search Here" />
                     <input type="submit" value="Submit"/>
                 </form>
